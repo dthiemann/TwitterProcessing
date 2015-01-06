@@ -23,7 +23,14 @@ private static AccessToken loadAccessToken() {
 //This listens for new tweet
 StatusListener listener = new StatusListener() {
 
-  public void onStatus(Status status) {}
+  public void onStatus(Status status) {
+    boolean bool = true;
+    while(bool) {
+      println("@" + status.getUser().getScreenName() + " - " + status.getText());
+      bool = false; 
+    }
+  }
+  
   public void onStallWarning(StallWarning stallWarning) {}
   public void onDeletionNotice(StatusDeletionNotice statusDeletionNotice) {}
   public void onTrackLimitationNotice(int numberOfLimitedStatuses) {}
@@ -41,6 +48,7 @@ StatusListener listener = new StatusListener() {
 void setup() {
   connectTwitter();
   twitter.addListener(listener);
+  twitter.sample();
 }
 
 void draw() {
