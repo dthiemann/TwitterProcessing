@@ -24,19 +24,19 @@ public void onException(Exception ex) {
 }
 
 //This listens for new tweet
-StatusListener listener StatusListener() {
-  
-  public void onStatus(Status status) {}
-  public void onStallWarning(StallWarning stallWarning) {}
-  public void onDeletionNotice(StatusDeletionNotice statusDeletionNotice) {}
-  public void onTrackLimitationNotice(int numberOfLimitedStatuses) {}
-  public void onScrubGeo(long userId, long upToStatusId) {}
+StatusListener listener = new StatusListener();
+
+public void onStatus(Status status) {}
+public void onStallWarning(StallWarning stallWarning) {}
+public void onDeletionNotice(StatusDeletionNotice statusDeletionNotice) {}
+public void onTrackLimitationNotice(int numberOfLimitedStatuses) {}
+
+public void onScrubGeo(long userId, long upToStatusId) {
   System.out.println("Got scrub_geo event userId:" + userId + "upToStatusId:" + upToStatusId);
-  
 }
 
 void setup() {
-  
+  twitter.sample();
 }
 
 void draw() {
