@@ -4,6 +4,7 @@ static String AccessToken = "90955642-3RkC0rHoSEAxfHiLzhA6ybZgJJ8Re3rHNNKC383ZV"
 static String AccessTokenSecret = "JB3uaou6yDNAnUrNtPnAqqFE23U1i1KkDGSyQGIfEOU99";
 
 TwitterStream twitter = new TwitterStreamFactory().getInstance();
+boolean bool = true;
 
 // Initial connection
 void connectTwitter() {
@@ -24,7 +25,6 @@ private static AccessToken loadAccessToken() {
 StatusListener listener = new StatusListener() {
 
   public void onStatus(Status status) {
-    boolean bool = true;
     while(bool) {
       println("@" + status.getUser().getScreenName() + " - " + status.getText());
       bool = false; 
