@@ -1,7 +1,7 @@
-static String OAuthConsumerKey = "";
-static String OAuthConsumerSecret = "";
-static String AccessToke = "";
-static String AccessTokenSecret = "";
+static String OAuthConsumerKey = "DfiAGTR8NjxzSwfRoARqa2klQ";
+static String OAuthConsumerSecret = "NCJQHyzSbGjMgYnh7jfebwuz53Q6KdJvS7UjhZI0ulSwLnNIR2";
+static String AccessToken = "90955642-3RkC0rHoSEAxfHiLzhA6ybZgJJ8Re3rHNNKC383ZV";
+static String AccessTokenSecret = "JB3uaou6yDNAnUrNtPnAqqFE23U1i1KkDGSyQGIfEOU99";
 
 TwitterStream twitter = new TwitterStreamFactory().getInstance();
 
@@ -10,7 +10,7 @@ void connectTwitter() {
   twitter.setOAuthConsumer(OAuthConsumerKey, OAuthConsumerSecret);
   
   AccessToken accessToken = loadAccessToken();
-  twitter.setOauthAccessToken(accessToken);
+  twitter.setOAuthAccessToken(accessToken);
 }
 
 //Loading up the access token
@@ -18,25 +18,29 @@ private static AccessToken loadAccessToken() {
   return new AccessToken(AccessToken, AccessTokenSecret);
 }
 
-// Exception notice
-public void onException(Exception ex) {
-  ex.printStackTrace();
-}
+
 
 //This listens for new tweet
-StatusListener listener = new StatusListener();
+StatusListener listener = new StatusListener() {
 
-public void onStatus(Status status) {}
-public void onStallWarning(StallWarning stallWarning) {}
-public void onDeletionNotice(StatusDeletionNotice statusDeletionNotice) {}
-public void onTrackLimitationNotice(int numberOfLimitedStatuses) {}
+  public void onStatus(Status status) {}
+  public void onStallWarning(StallWarning stallWarning) {}
+  public void onDeletionNotice(StatusDeletionNotice statusDeletionNotice) {}
+  public void onTrackLimitationNotice(int numberOfLimitedStatuses) {}
 
-public void onScrubGeo(long userId, long upToStatusId) {
-  System.out.println("Got scrub_geo event userId:" + userId + "upToStatusId:" + upToStatusId);
-}
+  public void onScrubGeo(long userId, long upToStatusId) {
+    System.out.println("Got scrub_geo event userId:" + userId + "upToStatusId:" + upToStatusId);
+  }
+  
+  // Exception notice
+  public void onException(Exception ex) {
+    ex.printStackTrace();
+  }
+};
 
 void setup() {
-  twitter.sample();
+  connectTwitter();
+  twitter.addListener(listener);
 }
 
 void draw() {
