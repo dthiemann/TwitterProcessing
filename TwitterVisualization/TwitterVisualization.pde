@@ -67,7 +67,6 @@ void draw() {
   
   fill(team1_color);
   text(Double.toString(100-round((float)percent*1000)/(double)10)+"%", width-(int)((1-percent)*width/1.9),(int)height*.47);
-  
 }
 
 // Initial connection
@@ -97,9 +96,13 @@ StatusListener listener = new StatusListener() {
     
     if (status.getText().indexOf(team1) != -1) {
       team1_counter++;
+      /* Display profile pic */
+      image(loadImage((status.getUser().getMiniProfileImageURL())), (int)random(width*.45), height-(int)random(height*.4));
     }
     if (status.getText().indexOf(team2) != -1) {
       team2_counter++;
+      /* Display profile pic */
+      image(loadImage((status.getUser().getMiniProfileImageURL())), (int)random(width*.45), height-(int)random(height*.4));
     }
   }
   
