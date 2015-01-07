@@ -44,7 +44,7 @@ void draw() {
   //Create labels
   fill(color(40,40,40)); //Gray
   rect(width*0, height*.05, width*4, height*.1);
-  rect(width*.6, height*.05), width*1, height*.1);
+  rect(width*.6, height*.05, width*1, height*.1);
   
   // Set labels
   fill(color(255,255,255));
@@ -52,7 +52,7 @@ void draw() {
   text(team2, width*.75, height*.125);
   
   //Calculate percentage of tweets
-  double percent = (double)team1_coutner / (team1_counter+team2_counter + 1);
+  double percent = (double)team1_counter / (team1_counter+team2_counter + 1);
   
   //Team 1's percentage
   fill(team1_color);
@@ -60,7 +60,13 @@ void draw() {
   
   //Team 2's percentage
   fill(team2_color);
-  rect((int)(width*percent) height*.25, width*1, height*.4);
+  rect((int)(width*percent), height*.25, width*1, height*.4);
+  
+  fill(team2_color);
+  text(Double.toString(round((float)percent*1000)/(double)10)+"%", (int)(percent*width/2.5),(int)height*.47);
+  
+  fill(team1_color);
+  text(Double.toString(100-round((float)percent*1000)/(double)10)+"%", width-(int)((1-percent)*width/1.9),(int)height*.47);
   
 }
 
