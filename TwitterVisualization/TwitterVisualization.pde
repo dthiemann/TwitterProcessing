@@ -29,10 +29,38 @@ void setup() {
   //Filter tweets
   String keywords[] = {team1, team2};
   twitter.filter(new FilterQuery().track(keywords));
+  
+  size(width,height);
+  f = createFont("Segoe UI", 48);
+  textFont(f);
+  background(color(0,0,0));
+  
+  
 }
 
 /* Must have for Processing */
 void draw() {
+  
+  //Create labels
+  fill(color(40,40,40)); //Gray
+  rect(width*0, height*.05, width*4, height*.1);
+  rect(width*.6, height*.05), width*1, height*.1);
+  
+  // Set labels
+  fill(color(255,255,255));
+  text(team1, width*.15, height*.125);
+  text(team2, width*.75, height*.125);
+  
+  //Calculate percentage of tweets
+  double percent = (double)team1_coutner / (team1_counter+team2_counter + 1);
+  
+  //Team 1's percentage
+  fill(team1_color);
+  rect(width*0, height*.25, (int)(width*percent), height*.4);
+  
+  //Team 2's percentage
+  fill(team2_color);
+  rect((int)(width*percent) height*.25, width*1, height*.4);
   
 }
 
