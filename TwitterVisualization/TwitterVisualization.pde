@@ -6,6 +6,14 @@ static String AccessTokenSecret = "JB3uaou6yDNAnUrNtPnAqqFE23U1i1KkDGSyQGIfEOU99
 TwitterStream twitter = new TwitterStreamFactory().getInstance();
 boolean bool = true;
 
+// Football Variables
+String team1 = "Lions";
+String team2 = "Cowboys";
+int team1_counter = 0;
+int team2_counter = 0;
+color team1_color = color(0, 109, 176);
+color team2_color = color(0, 35, 68);
+
 // Initial connection
 void connectTwitter() {
   twitter.setOAuthConsumer(OAuthConsumerKey, OAuthConsumerSecret);
